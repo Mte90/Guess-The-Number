@@ -3,5 +3,12 @@ name = "Guess"
 version = "0.1.0"
 authors = ["Daniele Scasciafratte <mte90net@gmail.com>"]
 
+[[bin]]
+name = "guess"
+path = "src/main.rs"
+
 [dependencies]
 qmlrs = "^0.1.1"
+
+[build-dependencies]
+pkg-config = "^0.3.8"
