@@ -8,7 +8,11 @@ name = "guess"
 path = "src/main.rs"
 
 [dependencies]
-qmlrs = "^0.1.1"
+cpp_core = "0.6.0"
+qt_core = "0.5.0"
+qt_gui = "0.5.0"
+qt_widgets = "0.5.0"
+qt_ui_tools = "0.5.0"
 
 [build-dependencies]
-pkg-config = "^0.3.8"
+qt_ritual_build = "0.5.0"

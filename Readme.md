@@ -9,4 +9,6 @@ That version require QtCreator or qmake to compile.
 
 ##Qt-Rust
 
-Working in progress 
+```
+cargo run --bin guess
+```
