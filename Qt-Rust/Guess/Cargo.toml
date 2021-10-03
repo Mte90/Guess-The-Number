@@ -2,6 +2,7 @@
 name = "Guess"
 version = "0.1.0"
 authors = ["Daniele Scasciafratte <mte90net@gmail.com>"]
+edition = "2018"
 
 [[bin]]
 name = "guess"

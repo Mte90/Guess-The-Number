@@ -10,5 +10,6 @@ That version require QtCreator or qmake to compile.
 ##Qt-Rust
 
 ```
+sudo apt-get install qt5-default qttools5-dev
 cargo run --bin guess
 ```
