@@ -1,9 +1,9 @@
 use rand::{self, Rng};
-use cpp_core::{Ptr, Ref, StaticUpcast};
-use qt_core::{qs, slot, ContextMenuPolicy, QBox, QObject, QPoint, SlotNoArgs, QPtr, QString};
+use cpp_core::{Ptr, StaticUpcast};
+use qt_core::{slot, QBox, QObject, SlotNoArgs, QPtr, QString};
 use qt_ui_tools::ui_form;
 use qt_widgets::{
-    QAction, QApplication, QLineEdit, QMenu, QMessageBox, QPushButton, QVBoxLayout, QWidget, SlotOfQPoint, QLabel
+    QApplication, QLineEdit, QPushButton, QWidget, QLabel
 };
 use std::rc::Rc;
 
@@ -47,18 +47,19 @@ impl TodoWidget {
     #[slot(SlotNoArgs)]
     fn guess(self: &Rc<Self>) {
         let mut rng = rand::thread_rng();
-        let the_number = rng.gen_range(1..=10);
+        let the_number = rng.gen_range(0..=10);
         unsafe {
             let user_number = self.form.number.text().to_int_0a();
+            let label;
             if user_number == the_number {
-                println!("Your number is {} and is right!", user_number)
+                self.form.output.set_style_sheet(&QString::from_std_str("QLabel { color : green; }"));
+                label = format!("Your number is {} and is right!", user_number);
             }
             else {
-                println!("Your number is {} but the right was {}!", user_number, the_number)
+                self.form.output.set_style_sheet(&QString::from_std_str("QLabel { color : red; }"));
+                label = format!("Your number is {} but the right was {}!", user_number, the_number);
             }
-            // let label = QString::new().as_ptr();
-            // label.arg_i64(the_number);
-            //self.form.output.set_text(QString::from_std_str("Test"));
+            self.form.output.set_text(&QString::from_std_str(label));
         }
     }
     
