@@ -18,20 +18,20 @@ struct Form {
 }
 
 #[derive(Debug)]
-struct TodoWidget {
+struct MainWindow {
     form: Form
 }
 
-impl StaticUpcast<QObject> for TodoWidget {
+impl StaticUpcast<QObject> for MainWindow {
     unsafe fn static_upcast(ptr: Ptr<Self>) -> Ptr<QObject> {
         ptr.form.widget.as_ptr().static_upcast()
     }
 }
 
-impl TodoWidget {
+impl MainWindow {
     fn new() -> Rc<Self> {
         unsafe {
-            let this = Rc::new(TodoWidget {
+            let this = Rc::new(MainWindow {
                 form: Form::load(),  
             });
             this.init();
@@ -72,8 +72,8 @@ impl TodoWidget {
 
 fn main() {
     QApplication::init(|_| unsafe {
-        let todo_widget = TodoWidget::new();
-        todo_widget.show();
+        let main_window = MainWindow::new();
+        main_window.show();
         QApplication::exec()
     })
 }
