@@ -9,4 +9,11 @@ That version require QtCreator or qmake to compile.
 
 ##Qt-Rust
 
-Working in progress 
+Working in progress
+
+##Qt-Go
+
+```
+go get github.com/therecipe/qt/widgets
+go run cmd/guess/main.go
+```
