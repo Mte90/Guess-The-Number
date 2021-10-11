@@ -15,5 +15,6 @@ Working in progress
 
 ```
 go get github.com/therecipe/qt/widgets
+go get -u -v github.com/stephenlyu/goqtuic To compile code from ui file (not needed as compiled code already present)
 go run cmd/guess/main.go
 ```

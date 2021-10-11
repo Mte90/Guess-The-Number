@@ -2,42 +2,39 @@ package main
 
 import (
 	"os"
-
+	"fmt"
 	"github.com/therecipe/qt/core"
-	"github.com/therecipe/qt/uitools"
 	"github.com/therecipe/qt/widgets"
+	"github.com/ilyasmg/Guess-The-Number/Qt-Go/uigen"
 )
 
-func main() {
-	widgets.NewQApplication(len(os.Args), os.Args)
 
-	MainWindow().Show()
-
-	widgets.QApplication_Exec()
+type MainWindow struct {
+	uigen.UIMainwindowMainWindow
+	Widget *widgets.QMainWindow
 }
 
-func MainWindow() *widgets.QWidget {
 
-	file := core.NewQFile2(":/../ui/mainwindow.ui")
-	file.Open(core.QIODevice__ReadOnly)
-	formWidget := uitools.NewQUiLoader(nil).Load(file, nil)
-	file.Close()
-
-	formWidget.SetWindowTitle("Guess the number")
-
+func main() {
+	app := widgets.NewQApplication(len(os.Args), os.Args)
+	window := &MainWindow{
+		Widget: widgets.NewQMainWindow(nil, core.Qt__Window),
+	}
+	window.SetupUI(window.Widget)
 	var (
-		ui_ok = widgets.NewQPushButtonFromPointer(formWidget.FindChild("ok", core.Qt__FindChildrenRecursively).Pointer())
-		ui_number = widgets.NewQLineEditFromPointer(formWidget.FindChild("number", core.Qt__FindChildrenRecursively).Pointer())
-		ui_output  = widgets.NewQLabelFromPointer(formWidget.FindChild("output", core.Qt__FindChildrenRecursively).Pointer())
+		ui_ok = widgets.NewQPushButtonFromPointer(window.Widget.FindChild("ok", core.Qt__FindChildrenRecursively).Pointer())
+		ui_number = widgets.NewQLineEditFromPointer(window.Widget.FindChild("number", core.Qt__FindChildrenRecursively).Pointer())
+		ui_output  = widgets.NewQLabelFromPointer(window.Widget.FindChild("output", core.Qt__FindChildrenRecursively).Pointer())
 	)
-
 	ui_ok.ConnectClicked(func(bool){
-
-	})
-
-	ui_number.ConnectReturnPressed(func(){
+		fmt.Println("Test1")
 		ui_output.SetText("Test")
 	})
 
-	return formWidget
+	ui_number.ConnectReturnPressed(func(){
+		fmt.Println("Test2")
+		ui_output.SetText("Test")
+	})
+	window.Widget.Show()
+	app.Exec()
 }
