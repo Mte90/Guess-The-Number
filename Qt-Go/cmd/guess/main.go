@@ -8,7 +8,7 @@ import (
 
 	"github.com/therecipe/qt/core"
 	"github.com/therecipe/qt/widgets"
-	"github.com/ilyasmg/Guess-The-Number/Qt-Go/uigen"
+	"github.com/Mte90/Guess-The-Number/Qt-Go/uigen"
 )
 
 
