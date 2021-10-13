@@ -9,7 +9,10 @@ That version require QtCreator or qmake to compile.
 
 ##Qt-Rust
 
-Working in progress
+```
+sudo apt-get install qt5-default qttools5-dev
+cargo run --bin guess
+```
 
 ##Qt-Go
 
@@ -18,3 +21,4 @@ go get github.com/therecipe/qt/widgets
 go get -u -v github.com/stephenlyu/goqtuic To compile code from ui file (not needed as compiled code already present)
 go run cmd/guess/main.go
 ```
+
