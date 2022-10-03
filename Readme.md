@@ -1,5 +1,6 @@
 # What?
-[![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)   
+
+[![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 ![](screenshot.png)
 
@@ -16,9 +17,6 @@ cargo run --bin guess
 
 ## Qt-Go
 
-```
-go get github.com/therecipe/qt/widgets
-go get -u -v github.com/stephenlyu/goqtuic To compile code from ui file (not needed as compiled code already present)
+```go
 go run cmd/guess/main.go
 ```
-
